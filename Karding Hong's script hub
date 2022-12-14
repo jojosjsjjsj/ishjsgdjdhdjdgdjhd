@@ -1,0 +1,259 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Blaze's Doors Script", "Synapse")
+
+
+
+
+local EntitySpawner = Window:NewTab("EntitySpawner")
+local EntitySpawnerSection = EntitySpawner:NewSection("Entitys")
+local ItemGiver = Window:NewTab("ItemGiver")
+local ItemGiverSection = ItemGiver:NewSection("ItemGiver")
+
+EntitySpawnerSection:NewButton("Spawn Rush", "Hide Quickly.", function()
+    print ("Summoned.")
+ end)
+
+EntitySpawnerSection:NewButton("Screech", "Look behind you!", function()
+    print("Summoned.")
+    require(game.StarterGui.MainUI.Initiator.Main_Game.RemoteListener.Modules.Screech)(require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game),
+workspace.CurrentRooms[game.Players.LocalPlayer:GetAttribute("CurrentRoom")])
+     
+end)
+
+
+
+EntitySpawnerSection:NewButton("Halt", "Careful, Turn around!", function()
+    print("Summoned.")
+end)
+
+
+
+
+
+
+EntitySpawnerSection:NewButton("Ambush", "Coming back for seconds!", function()
+    print("Summoned")
+    local Creator = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors%20Entity%20Spawner/Source.lua"))()
+
+-- Create entity
+local entity = Creator.createEntity({
+    CustomName = "Ambush", -- Custom name of your entity
+    Model = "https://github.com/RegularVynixu/Utilities/blob/main/Doors%20Entity%20Spawner/Models/Ambush.rbxm?raw=true", -- Can be GitHub file or rbxassetid --ignore
+    Speed = 400, -- Ambush Speed (100 is rush speed)
+    DelayTime = 2.8, -- Time before starting cycles (seconds)
+    HeightOffset = 0,
+    CanKill = true, --True = the entity can kill you
+    BreakLights = true, --True = the entity will break the lights once he reaches a room
+    FlickerLights = {
+        true, -- Enabled
+        1.1, -- How long the lights flicker for (in seconds)
+
+    },
+    Cycles = {
+        Min = 2, --Minimum Amount of Cycles
+        Max = 6, --Maximum Amount of Cycles
+        WaitTime = 2.2, --Time before starting another cycle (in seconds)
+    },
+    CamShake = {
+        true, -- Enabled
+        {5, 15, 0.1, 1}, -- Shake values (don't change if you don't know)
+        150, -- Shake start distance (from Entity to you)
+    },
+    Jumpscare = {
+        true, -- Enabled ('false' if you don't want jumpscare)
+        {
+            Image1 = "rbxassetid://10483855823", -- Image1 url
+            Image2 = "rbxassetid://10483999903", -- Image2 url
+            Shake = true,
+            Sound1 = {
+                10483790459, -- SoundId
+                { Volume = 0.5 }, -- Sound properties
+            },
+            Sound2 = {
+                10483837590, -- SoundId
+                { Volume = 0.5 }, -- Sound properties
+            },
+            Flashing = {
+                true, -- Enabled
+                Color3.fromRGB(255, 255, 255), -- Color
+            },
+            Tease = {
+                true, -- Enabled ('false' if you don't want tease)
+                Min = 1,
+                Max = 3,
+            },
+        },
+    },
+    CustomDialog = {"nice try fatty", "i got ya", "AH"}, -- Custom death message (can be as long as you want)
+})
+
+-----[[ Advanced ]]-----
+entity.Debug.OnEntitySpawned = function(entityModel)
+    print("Entity has spawned:", entityModel) 
+    wait(2.3)  --The thing that happens once the entity has spawned.
+    game.Workspace.Ambience_Ambush:Play()
+end
+
+entity.Debug.OnEntityDespawned = function(entityModel)
+    print("Entity has despawned:", mentityModelodel)  --The thing that happens once the entity has Despawned.
+end
+
+entity.Debug.OnEntityStartMoving = function(entityModel)
+    print("Entity has started moving:", entityModel)   --The thing that happens once the entity starts Moving.
+end
+
+entity.Debug.OnEntityFinishedRebound = function(entityModel)
+    print("Entity finished rebound:", entityModel) --Thing that happens when it finishes a rebound.
+end
+
+entity.Debug.OnDeath = function()
+    warn("You died.")  --Thing that happens when you die to the entity.
+end
+------------------------
+
+
+-- Ignore this (This makes the entity spawn)
+Creator.runEntity(entity) 
+
+end)
+
+
+
+
+
+
+ItemGiverSection:NewButton("Crucifix", "Get that away from me!", function()
+    print("Clicked")
+
+
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/exertevent/Scripts/main/Crucifix"))()
+end)
+
+
+
+
+ItemGiverSection:NewButton("Skeleton Key (used in shop)", "5 Uses... Think carefully", function()
+    print("Clicked")
+
+
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Functions.lua"))()
+local CustomShop = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Shop%20Items/Source.lua"))()
+
+
+
+local exampleTool = LoadCustomInstance("rbxassetid://11697889137")
+
+
+
+CustomShop.CreateItem(exampleTool, {
+    Title = "Skeleton Key",
+    Desc = "5 uses only. do it carefully.",
+    Image = "https://static.wikia.nocookie.net/doors-game/images/e/eb/Icon_skeletonkey2.png/revision/latest?cb=20220728033038",
+    Price = 0,
+    Stack = 1,
+})
+
+	
+end)
+
+
+
+
+
+ItemGiverSection:NewButton("Candle (DO IT IN SHOP)", "Lighting Up The new candle.", function()
+    print("Clicked")
+
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Functions.lua"))()
+local CustomShop = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Shop%20Items/Source.lua"))()
+
+
+
+local exampleTool = LoadCustomInstance("rbxassetid://8707602598")
+
+
+
+CustomShop.CreateItem(exampleTool, {
+    Title = "Candle",
+    Desc = "equip this and im gonna jiggle ur balls hehe",
+    Image = "https://static.wikia.nocookie.net/welcome-to-bloxburg/images/b/b0/OldCandle.png/revision/latest?cb=20171216030441",
+    Price = 0,
+    Stack = 1,
+})
+
+	
+end)
+
+
+
+
+ItemGiverSection:NewKeybind("Get Crucifix", "Devil's Nightmare", Enum.KeyCode.T, function()
+	print("Given")
+
+
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/exertevent/Scripts/main/Crucifix"))()
+end)
+
+
+EntitySpawnerSection:NewButton("Spawn Seek", "Ready? Here i come.", function()
+    print ("Summoned.")
+
+	local EntitySpawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/dreadmania/Scripts/main/EntitySpawner.lua"))()
+local Configuration = {}
+
+EntitySpawner:Spawn("Seek", unpack(Configuration))
+ 
+ end)
+
+
+
+
+ local Toggles = Window:NewTab("Toggles")
+local TogglesSection = Toggles:NewSection("Toggle Here")
+
+
+ItemGiverSection:NewButton("Christmas Gun (DO IT IN SHOP)", "PEW PEW PEW PEW PEW.", function()
+    print("Clicked")
+
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Functions.lua"))()
+local CustomShop = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Shop%20Items/Source.lua"))()
+
+
+
+local exampleTool = LoadCustomInstance("rbxassetid://11636345252") --custom item if you want to
+
+
+
+CustomShop.CreateItem(exampleTool, {
+    Title = "Christmas Tree Gun",
+    Desc = "MERRY CRISMAAAAAAA!",
+    Image = "https://www.pewpewtactical.com/wp-content/uploads/2021/12/3.-Christmas-Guns-Shadow-Systems-MR920-e1640557050416-1200x801.jpg",
+    Price = 10,
+    Stack = 1,
+})
+end)
+
+
+
+
+local OtherGuis = Window:NewTab("OtherGuis")
+local OtherGuisSection = OtherGuis:NewSection("OtherGuis")
+
+
+
+OtherGuisSection:NewButton("Mega Doors Script", "idk who made this", function()
+    print("Spawned")
+
+loadstring(game:HttpGet("https://pastebin.com/raw/Uz63s9XX"))()
+
+       end)
+
+
+OtherGuisSection:NewButton("Plamen's Gui", "Credits to plamen", function() 
+	print("Spawned")
+
+
+loadstring(game:HttpGet('https://raw.githubusercontent.com/plamen6789/DoorsEntitySummonerGUI/main/EntityGUI'))()
+
+end)
